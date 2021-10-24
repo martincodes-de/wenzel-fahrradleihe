@@ -15,11 +15,34 @@
 
     <body class="blue darken-4">
         <main class="container">
+
+            <?php
+                if (isset($_POST["rentVehicle"]) && isset($_POST["vehicle"])) {
+                    $isVehicleAvailable = Vehicle::isVehicleAvailable($databaseVehicleStore, $_POST["vehicle"]);
+                }
+
+                if (isset($isVehicleAvailable) && $isVehicleAvailable === true) {
+                    Vehicle::setAvailabilityToFalse($databaseVehicleStore, $_POST["vehicle"]);
+
+                    $_SESSION["rentedVehicleID"] = $_POST["vehicle"];
+                }
+            ?>
+
+            <?php if(isset($isVehicleAvailable) && $isVehicleAvailable === true): ?>
+                <div class="card-panel green lighten-2">Das Fahrrad ist mietbar und hast es gemietet! Du wirst gleich zum Code weitergeleitet.</div>
+                <meta http-equiv="refresh" content="3;url=vehicle-rented.php">
+            <?php endif; ?>
+
+            <?php if(isset($isVehicleAvailable) && $isVehicleAvailable === false): ?>
+                <div class="card-panel red lighten-2">Das Fahrrad ist nicht mietbar.</div>
+                <meta http-equiv="refresh" content="3;url=vehicle-rented.php">
+            <?php endif; ?>
+
             <div class="card-panel white lighten-4">
                 <h3>Wenzels Fahrradleihe (Prototyp)</h3>
                 <p>Schnappe dir ein Fahrrad und fahre rum. Vielleicht ist ja noch eins frei?</p>
 
-                <form>
+                <form method="post">
                     <div class="row">
                         <div class="input-field col s12">
                             <select name="vehicle" id="vehicle">
@@ -47,7 +70,7 @@
                             <label for="address">Deine Adresse</label>
 
                             <br><br>
-                            <button type="submit" class="btn">Fahrrad mieten</button>
+                            <button type="submit" name="rentVehicle" class="btn">Fahrrad mieten</button>
                         </div>
                     </div>
                 </form>
