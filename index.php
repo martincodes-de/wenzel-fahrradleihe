@@ -57,20 +57,37 @@
                     </div>
 
                     <div class="row">
-                        <div class="input-field col s12">
+                        <div class="input-field col s6">
                             <input value="" id="name" type="text" class="validate" required>
-                            <label for="name">Dein Name</label>
+                            <label for="name">Dein Vorname</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input value="" id="lastname" type="text" class="validate" required>
+                            <label for="lastname">Dein Nachname</label>
                         </div>
                     </div>
 
                     <div class="row">
                         <div class="input-field col s12">
                             <input value="" id="address" type="text" class="validate" required>
-                            <label for="address">Deine Adresse</label>
-
-                            <br><br>
-                            <button type="submit" name="rentVehicle" class="btn">Fahrrad mieten</button>
+                            <label for="address">Deine Straße und Hausnummer</label>
                         </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="input-field col s6">
+                            <input value="" id="address2" type="text" class="validate" required>
+                            <label for="address2">Deine Postleitzahl</label>
+                        </div>
+
+                        <div class="input-field col s6">
+                            <input value="" id="address3" type="text" class="validate" required>
+                            <label for="address3">Dein Ort</label>
+                        </div>
+
+                        <br><br>
+                        <button type="submit" name="rentVehicle" class="btn">Fahrrad mieten</button>
                     </div>
                 </form>
 
