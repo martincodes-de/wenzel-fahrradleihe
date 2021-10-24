@@ -35,7 +35,6 @@
 
             <?php if(isset($isVehicleAvailable) && $isVehicleAvailable === false): ?>
                 <div class="card-panel red lighten-2">Das Fahrrad ist nicht mietbar.</div>
-                <meta http-equiv="refresh" content="3;url=vehicle-rented.php">
             <?php endif; ?>
 
             <div class="card-panel white lighten-4">
@@ -74,6 +73,8 @@
                         </div>
                     </div>
                 </form>
+
+                <a href="reset.php" class="btn red">Alle Fahrzeuge zurücksetzen</a>
             </div>
         </main>
 

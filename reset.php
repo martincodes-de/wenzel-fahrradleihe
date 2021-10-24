@@ -2,8 +2,13 @@
     require_once __DIR__."/config.php";
 
 if (isset($databaseVehicleStore)) {
-    $databaseVehicleStore->updateById(1, ["available" => true]);
-    $databaseVehicleStore->updateById(2, ["available" => true]);
+    $users = $databaseVehicleStore->findBy(["_id", ">", 0]);
+
+    foreach ($users as $user) {
+        $databaseVehicleStore->updateById($user["_id"], [
+           "available" => true
+        ]);
+    }
 }
 
 ?>
